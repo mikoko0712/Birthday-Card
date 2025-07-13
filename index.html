@@ -2,155 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miko’s Birthday — Heart of Mix & Match</title>
-  <link rel="preload" href="assets/image.jpg" as="image">
   <style>
-    :root {
-      --accent: #ffeb3b;
-      --glass-bg: rgba(255, 255, 255, 0.15);
-      --glass-brd: rgba(255, 255, 255, 0.25);
+    * {
+      box-sizing: border-box;
     }
-    * { box-sizing: border-box; }
 
-    /* ================= FULL‑SCREEN BLURRED BACKGROUND ================= */
-    html {
-      height: 100%;
-    }
-    body {
-      min-height: 100%;
+    html, body {
       margin: 0;
-      position: relative;
-      font-family: "Segoe UI", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      color: #fff;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
       text-align: center;
-      overflow-x: hidden;
+      overflow: hidden;
     }
-    /* background layer */
+
     body::before {
-      content: "";
+      content: '';
       position: fixed;
-      inset: 0;
-      background: url("assets/image.jpg") center/cover no-repeat;
-      filter: blur(8px) saturate(120%);
-      transform: scale(1.05);   /* avoid edge clipping after blur */
-      z-index: -2;
-    }
-    /* overlay tint */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 100%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px) brightness(0.6);
       z-index: -1;
     }
 
-    /* ================= MAIN CONTENT ================= */
-    .glass-card {
-      backdrop-filter: blur(6px) brightness(105%);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-brd);
-      border-radius: 1.5rem;
-      padding: 2.5rem clamp(2rem, 5vw, 3rem);
-      max-width: 540px;
-      width: 100%;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      animation: popIn 0.8s cubic-bezier(.22,1.14,.26,1.12);
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 4.5vw, 3.25rem);
-      margin: 0 0 1rem;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.75);
+      font-size: 2.8em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
     }
 
-    p { line-height: 1.55; }
-
-    /* circular avatar */
-    .avatar {
-      width: 180px;
-      aspect-ratio: 1/1;
+    .photo-frame {
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      border: 5px solid var(--accent);
       overflow: hidden;
-      margin-inline: auto;
-      margin-bottom: 1.75rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-      animation: float 6s ease-in-out infinite;
+      border: 5px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      margin-bottom: 25px;
     }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* music toggle button */
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 25px 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
     .music-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
+      background-color: rgba(255, 255, 255, 0.2);
       border: none;
-      color: #222;
-      padding: 0.85rem 2.2rem;
-      font-size: 1rem;
-      border-radius: 2rem;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .music-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-    .music-btn:active { transform: translateY(0); }
-
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.8) translateY(40px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      transition: background-color 0.3s ease;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
+    .music-btn:hover {
+      background-color: rgba(255, 255, 255, 0.4);
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Miko’s Birthday — Heart of Mix & Match</h1>
 
-  <main class="glass-card">
-    <h1>Miko’s Birthday 🎂</h1>
+    <div class="photo-frame">
+      <img src="image.jpg" alt="Miko">
+    </div>
 
-    <figure class="avatar">
-      <img src="assets/image.jpg" alt="Miko">
-    </figure>
+    <div class="card">
+      <p>Happy Birthday, Miko! 🎉<br><br>
+        You’re the amazing spark behind the Mix & Match family — a true creator, a kind heart, and an inspiration to everyone around you.<br>
+        Here's to more joy, colors, and wonderful creations in your life! 💛</p>
+    </div>
 
-    <p>Happy Birthday, <strong>Miko</strong>! You’re the spark behind the Mix & Match family — a true creator, a kind heart, and an inspiration to everyone around you. Here’s to more joy, colors, and wonderful creations in your life! 💛</p>
-
-    <audio id="bgMusic" loop preload="auto">
-      <source src="assets/music.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
 
-    <button class="music-btn" id="musicToggle">▶ Play Music</button>
-  </main>
+    <button class="music-btn" onclick="toggleMusic()">Play Music</button>
+  </div>
 
   <script>
-    const music   = document.getElementById("bgMusic");
-    const btn     = document.getElementById("musicToggle");
-    const playTxt = "▶ Play Music";
-    const pauseTxt= "⏸ Pause Music";
+    const music = document.getElementById("bgMusic");
+    const btn = document.querySelector(".music-btn");
 
-    btn.addEventListener("click", () => {
+    function toggleMusic() {
       if (music.paused) {
-        music.play().catch(console.error);
-        btn.textContent = pauseTxt;
+        music.play();
+        btn.textContent = "Pause Music";
       } else {
         music.pause();
-        btn.textContent = playTxt;
+        btn.textContent = "Play Music";
       }
-    });
+    }
   </script>
-
 </body>
 </html>
